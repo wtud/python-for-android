@@ -252,6 +252,7 @@ function usage() {
 	echo "  -m 'mod1 mod2'         Modules to include"
 	echo "  -f                     Restart from scratch (remove the current build)"
 	echo "  -x                     display expanded values (execute 'set -x')"
+	echo "  -e 'ext1|ext2'         Copies files in libs with these extensions to dist"
 	echo
 	echo "For developers:"
 	echo "  -u 'mod1 mod2'         Modules to update (if already compiled)"
@@ -767,7 +768,7 @@ function run_distribute() {
 	try rm -f "$DIST_PATH"/private/lib/libpython2.7.so
 	try rm -rf "$DIST_PATH"/private/lib/pkgconfig
 	try cd "$DIST_PATH"/private/lib/python2.7
-	try find . | grep -E '*\.(py|pyc|so\.o|so\.a|so\.libs)$' | xargs rm
+	try find . | grep -E "*\.(py|pyc|so\.o|so\.a|so\.libs${EXTENSIONS})\$" | xargs rm
 
 	# we are sure that all of theses will be never used on android (well...)
 	try rm -rf ctypes
@@ -847,6 +848,12 @@ while getopts ":hvlfxm:u:d:s" opt; do
 			;;
 		m)
 			MODULES="$OPTARG"
+			;;
+		e)
+			EXTENSIONS="$OPTARG"
+			if [ -n $EXTENSIONS ]; then
+				EXTENSIONS="|$EXTENSIONS"
+			fi
 			;;
 		u)
 			MODULES_UPDATE="$OPTARG"
