@@ -26,7 +26,7 @@ RECIPE_triblerdeps=$RECIPES_PATH/triblerdeps
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_triblerdeps() {
-	true
+	cp $CURVES_source $CURVES_dest
 }
 
 # function called to build the source code
@@ -39,5 +39,5 @@ function build_triblerdeps() {
 
 # function called after all the compile have been done
 function postbuild_triblerdeps() {
-	cp $CURVES_source $CURVES_dest
+	true
 }
