@@ -29,22 +29,22 @@ RECIPE_triblerdeps=$RECIPES_PATH/triblerdeps
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_triblerdeps() {
-true
+	true
 }
  
 # function called to build the source code
 function build_triblerdeps() {
-cd $BUILD_triblerdeps
-push_arm
-try $HOSTPYTHON setup.py install
-pop_arm
+	cd $BUILD_triblerdeps
+	push_arm
+	try $HOSTPYTHON setup.py install
+	pop_arm
 }
  
 # function called after all the compile have been done
 function postbuild_triblerdeps() {
  
-# curves.ec probably gets ignored by setup.py install,
-# copy it manually to site-packages of the built python
-try cp $CURVES_source $CURVES_dest
+	# curves.ec probably gets ignored by setup.py install,
+	# copy it manually to site-packages of the built python
+	try cp $CURVES_source $CURVES_dest
  
 }
