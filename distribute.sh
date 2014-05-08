@@ -830,7 +830,7 @@ function arm_deduplicate() {
 
 
 # Do the build
-while getopts ":hvlfxm:u:d:s" opt; do
+while getopts ":hvlfxm:e:u:d:s" opt; do
 	case $opt in
 		h)
 			usage
