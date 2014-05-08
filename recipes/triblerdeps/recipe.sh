@@ -29,7 +29,7 @@ RECIPE_triblerdeps=$RECIPES_PATH/triblerdeps
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_triblerdeps() {
-	true
+	echo "_lsprof.so" >> "${BUILD_PATH}/whitelist.txt"
 }
  
 # function called to build the source code
