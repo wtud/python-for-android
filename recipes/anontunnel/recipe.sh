@@ -13,7 +13,7 @@ DEPS_anontunnel=(kivy)
 URL_anontunnel=http://ios-dev.no-ip.org/anontunnel-$VERSION_anontunnel.tar.gz
 
 # md5 of the package
-MD5_anontunnel=57892630411719ef0dd3cee48d025eec
+MD5_anontunnel=02e7e3557436c1d1f0ccf99d3a498a17
 
 # default build path
 BUILD_anontunnel=$BUILD_PATH/anontunnel/$(get_directory $URL_anontunnel)
