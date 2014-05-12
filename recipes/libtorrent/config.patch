@@ -1,0 +1,22 @@
+--- build/libtorrent/libtorrent-rasterbar-0.16.16/include/libtorrent/config.hpp	2014-02-23 20:14:56.000000000 +0100
++++ config.hpp	2014-05-08 21:19:33.576066535 +0200
+@@ -200,11 +200,17 @@
+ // ==== LINUX ===
+ #elif defined __linux__
+ #define TORRENT_LINUX
+-#define TORRENT_USE_IFADDRS 1
++#ifndef ANDROID
++ #define TORRENT_USE_POSIX_MEMALIGN 1
++ #define TORRENT_USE_IFADDRS 1
++#else
++ #define TORRENT_USE_POSIX_MEMALIGN 0
++ #define TORRENT_USE_IFADDRS 0
++ #define TORRENT_HAS_FALLOCATE 0
++#endif
+ #define TORRENT_USE_NETLINK 1
+ #define TORRENT_USE_IFCONF 1
+ #define TORRENT_HAS_SALEN 0
+-#define TORRENT_USE_POSIX_MEMALIGN 1
+ #if __amd64__ || __i386__
+ #define TORRENT_USE_EXECINFO 1
+ #endif
