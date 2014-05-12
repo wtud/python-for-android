@@ -21,10 +21,9 @@ RECIPE_libtorrent=$RECIPES_PATH/libtorrent
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_libtorrent() {
-	true
-	#patch $BUILD_libtorrent/include/libtorrent/config.hpp < ${RECIPE_libtorrent}/config.patch
-	#patch $BUILD_libtorrent/src/file.cpp < ${RECIPE_libtorrent}/file.patch
-	#patch $BUILD_libtorrent/src/utp_stream.cpp < ${RECIPE_libtorrent}/utp_stream.patch
+	patch $BUILD_libtorrent/include/libtorrent/config.hpp < ${RECIPE_libtorrent}/config.patch
+	patch $BUILD_libtorrent/src/file.cpp < ${RECIPE_libtorrent}/file.patch
+	patch $BUILD_libtorrent/src/utp_stream.cpp < ${RECIPE_libtorrent}/utp_stream.patch
 }
 
 # function called to build the source code
@@ -32,11 +31,11 @@ function build_libtorrent() {
 	
 	# Build using bjam with boost statically linked
 	cd $BUILD_libtorrent
-	export BOOST_ROOT=/home/rolf/Projects/Android/android-libtorrent/Boost-for-Android/boost_1_55_0
-	export BOOST_BUILD_PATH=/home/rolf/Projects/Android/android-libtorrent/Boost-for-Android/boost_1_55_0/tools/build/v2
+	export BOOST_ROOT=$BUILD_boost
+	export BOOST_BUILD_PATH=$BUILD_boost/tools/build/v2
 	#./configure --enable-python-binding --host=arm-linux-gnueabi --with-boost-system=/home/rolf/Projects/Android/android-libtorrent/Boost-for-Android/build/lib/libboost_system-gcc-mt-1_55.a
 
-	$BUILD_boost/bjam gcc-androidR9 release dht-support=on boost=system boost-link=static link=static geoip=static boost-link=static optimization=space asserts=off 
+	$BUILD_boost/bjam gcc-androidR9 release dht-support=on boost=source link=static geoip=static boost-link=static optimization=space asserts=off 
 
 }
 
