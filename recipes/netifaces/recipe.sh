@@ -1,9 +1,9 @@
 #!/bin/bash
 
-VERSION_netifaces=0.8
+VERSION_netifaces=0.10.3
 DEPS_netifaces=(hostpython python setuptools)
-URL_netifaces=http://alastairs-place.net/projects/netifaces/netifaces-$VERSION_netifaces.tar.gz
-MD5_netifaces=e57e5983f4c286fac5f8068fbfc5c873
+URL_netifaces=http://pypi.python.org/packages/source/n/netifaces/netifaces-$VERSION_netifaces.tar.gz
+MD5_netifaces=b96913473e1dcc3c4a7c43bc15d10e26
 BUILD_netifaces=$BUILD_PATH/netifaces/$(get_directory $URL_netifaces)
 RECIPE_netifaces=$RECIPES_PATH/netifaces
 
