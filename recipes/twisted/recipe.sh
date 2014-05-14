@@ -1,9 +1,9 @@
 #!/bin/bash
 
 VERSION_twisted=${VERSION_twisted:-11.1}
-URL_twisted=http://pypi.python.org/packages/source/T/Twisted/Twisted-13.2.0.tar.bz2
+URL_twisted=http://twistedmatrix.com/Releases/Twisted/$VERSION_twisted/Twisted-$VERSION_twisted.0.tar.bz2
 DEPS_twisted=(zope)
-MD5_twisted=83fe6c0c911cc1602dbffb036be0ba79
+MD5_twisted=
 BUILD_twisted=$BUILD_PATH/twisted/$(get_directory $URL_twisted)
 RECIPE_twisted=$RECIPES_PATH/twisted
 
