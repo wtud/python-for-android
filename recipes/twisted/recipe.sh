@@ -1,9 +1,10 @@
 #!/bin/bash
 
-VERSION_twisted=${VERSION_twisted:-11.1}
+VERSION_twisted=${VERSION_twisted:-14.0}
 URL_twisted=http://twistedmatrix.com/Releases/Twisted/$VERSION_twisted/Twisted-$VERSION_twisted.0.tar.bz2
+
 DEPS_twisted=(zope)
-MD5_twisted=
+MD5_twisted=9625c094e0a18da77faa4627b98c9815
 BUILD_twisted=$BUILD_PATH/twisted/$(get_directory $URL_twisted)
 RECIPE_twisted=$RECIPES_PATH/twisted
 
@@ -25,7 +26,7 @@ function build_twisted() {
 	export LDFLAGS="$LDFLAGS -L$LIBS_PATH"
 	export LDSHARED="$LIBLINK"
 
-	export PYTHONPATH=$BUILD_hostpython/Lib/site-packages
+	export PYTHONPATH=$BUILD_hostpython/Lib/site-packages:$BUILD_hostpython/build/lib.linux-x86_64-2.7
 
 	# fake try to be able to cythonize generated files
 	$HOSTPYTHON setup.py build_ext
