@@ -14,7 +14,7 @@ DEPS_tribler=(kivy openssl)
 URL_tribler=https://github.com/devos50/Tribler/raw/master/Tribler-$VERSION_tribler.tar.gz
  
 # md5 of the package
-MD5_tribler=d6458740b494d716fe54cd956b7c7e43
+MD5_tribler=1f964b83feeb3e4d11634ac368e0b028
  
 # default build path
 BUILD_tribler=$BUILD_PATH/tribler/$(get_directory $URL_tribler)
