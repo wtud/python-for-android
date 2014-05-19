@@ -2,7 +2,7 @@
 
 
 # version of your package
-VERSION_apsw=${VERSION_apsw:-3.8.4.1-r1}
+VERSION_apsw=${VERSION_apsw:-3.6.22-r1}
 
 
 # dependencies of this recipe
@@ -10,12 +10,10 @@ DEPS_apsw=(python)
 
 
 # url of the package
-URL_apsw=https://github.com/rogerbinns/apsw/releases/download/3.8.4.1-r1/apsw-3.8.4.1-r1.zip
-
+URL_apsw=https://github.com/rogerbinns/apsw/archive/3.6.22-r1.tar.gz
 
 # md5 of the package
-MD5_apsw=5ad3098489576929b90f4215eb5b2621
-
+MD5_apsw=3d7dbf82d10d5fd20c894945452871b8
 
 # default build path
 BUILD_apsw=$BUILD_PATH/apsw/$(get_directory $URL_apsw)
@@ -35,7 +33,9 @@ function prebuild_apsw() {
     if [ ! -d ${BUILD_apsw}/sqlite3 ]; then
         echo "fetching sqlite..."
         # using /usr/bin/python for this
- python setup.py fetch --sqlite --version=3.8.4.1 --missing-checksum-ok
+	python setup.py fetch --sqlite --version=3.6.22 --missing-checksum-ok
+	# use included sqlite3 source files, because they somehow work
+	cp $BUILD_PATH/../src/jni/sqlite3/sqlite3.* sqlite3/
     fi
 
 
@@ -99,7 +99,7 @@ function build_apsw() {
 
     echo "building apsw in `pwd`..."
     # now we can build; enable the FTS4 sqlite extension for full-text search
-    try ${HOSTPYTHON} setup.py build --enable=fts4
+    try ${HOSTPYTHON} setup.py build --enable=fts3
     echo "installing apsw..."
     try ${HOSTPYTHON} setup.py install
     echo "done with apsw."
