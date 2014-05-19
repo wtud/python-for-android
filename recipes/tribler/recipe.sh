@@ -10,7 +10,8 @@ VERSION_tribler=${VERSION_tribler:-0.1.0}
 DEPS_tribler=(kivy openssl)
  
 # url of the package
-URL_tribler=http://ios-dev.no-ip.org/Tribler-$VERSION_tribler.tar.gz
+#URL_tribler=http://ios-dev.no-ip.org/Tribler-$VERSION_tribler.tar.gz
+URL_tribler=https://github.com/devos50/Tribler/raw/master/Tribler-$VERSION_tribler.tar.gz
  
 # md5 of the package
 MD5_tribler=d6458740b494d716fe54cd956b7c7e43
