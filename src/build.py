@@ -455,6 +455,9 @@ tools directory of the Android SDK.
                           'argument more than once to include multiple jars'))
     ap.add_argument('--meta-data', dest='meta_data', action='append',
                     help='Custom key=value to add in application metadata')
+    ap.add_argument('--launch-intent', dest='launch_intent',
+                    help=('If this is set, an intent will be launched after main.py exits '
+                          '(supports ClassName.class and org.example.com/ActivityName)'))
 
     args = ap.parse_args()
 

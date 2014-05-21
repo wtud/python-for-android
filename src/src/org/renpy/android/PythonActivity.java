@@ -281,6 +281,8 @@ public class PythonActivity extends Activity implements Runnable {
                 mView.start();
             }
         });
+
+        /* TODO: Add intent launcher here */
     }
 
     @Override
