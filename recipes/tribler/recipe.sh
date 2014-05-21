@@ -14,14 +14,14 @@ DEPS_tribler=(kivy openssl)
 URL_tribler=https://github.com/devos50/Tribler/raw/master/Tribler-$VERSION_tribler.tar.gz
  
 # md5 of the package
-MD5_tribler=58e5a18e649067c1e892bf3ce1f84e25
+MD5_tribler=d867acae4b79fd108d982b8481b6680a
  
 # default build path
 BUILD_tribler=$BUILD_PATH/tribler/$(get_directory $URL_tribler)
  
 # set the correct source and destination for the curves.ec file (this is not automatically done so we have to do it)
-# CURVES_source=$BUILD_tribler/tribler/crypto/curves.ec
-# CURVES_dest=$BUILD_PATH/python-install/lib/python2.7/site-packages/tribler/crypto/curves.ec
+CURVES_source=$BUILD_tribler/Tribler/community/privatesemantic/crypto/curves.ec
+CURVES_dest=$BUILD_PATH/python-install/lib/python2.7/site-packages/Tribler/community/privatesemantic/crypto/curves.ec
  
  
 # default recipe path
@@ -46,6 +46,8 @@ function postbuild_tribler() {
  
 	# curves.ec probably gets ignored by setup.py install,
 	# copy it manually to site-packages of the built python
-	# try cp $CURVES_source $CURVES_dest
- 
+
+	echo "CURVES EC SOURCE: $BUILD_tribler"
+	try cp $CURVES_source $CURVES_dest
+
 }
