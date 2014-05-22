@@ -4,7 +4,7 @@
 VERSION_libtorrent=${VERSION_libtorrent:-0.16.16}
 
 # dependencies of this recipe
-DEPS_libtorrent=()
+DEPS_libtorrent=(python)
 
 # url of the package
 URL_libtorrent=http://downloads.sourceforge.net/project/libtorrent/libtorrent/libtorrent-rasterbar-${VERSION_libtorrent}.tar.gz
@@ -21,27 +21,14 @@ RECIPE_libtorrent=$RECIPES_PATH/libtorrent
 # function called for preparing source code if needed
 # (you can apply patch etc here.)
 function prebuild_libtorrent() {
-	#patch ${BUILD_libtorrent}/include/libtorrent/config.hpp < ${RECIPE_libtorrent}/config.patch
-	#patch ${BUILD_libtorrent}/src/file.cpp < ${RECIPE_libtorrent}/file.patch
-	#patch ${BUILD_libtorrent}/src/utp_stream.cpp < ${RECIPE_libtorrent}/utp_stream.patch
+	true
 }
 
 # function called to build the source code
 function build_libtorrent() {
 	
-	# Build using bjam with boost statically linked
-	cd $BUILD_libtorrent/bindings/python
-	export BOOST_ROOT=$BUILD_boost
-	export BOOST_BUILD_PATH=${BUILD_boost}/tools/build/v2
-	#$BUILD_boost/b2 gcc-androidR9 release need-librt=no dht-support=on boost=source link=static geoip=off boost-link=static asserts=off threading=single
-	
-	cp $RECIPE_libtorrent/armeabi/libtorrent.so $BUILD_PATH/python-install/lib/python2.7/site-packages/libtorrent.so
-	# Build using automake
-	#BOOSTANDROID=/home/rolf/Projects/Android/tordroid/boostandroid
-	#cd $BUILD_libtorrent
-	#push_arm
-	#./configure --enable-python-binding --host=arm-linux-gnueabi --with-boost=${BOOSTANDROID}/build
-	#pop_arm
+	# Copy the prebuilt libtorrent.so to the python's packages, so it can be imported
+	try cp $RECIPE_libtorrent/libtorrent.so $BUILD_PATH/python-install/lib/python2.7/site-packages/libtorrent.so
 
 }
 
