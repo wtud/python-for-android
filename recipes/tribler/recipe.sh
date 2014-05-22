@@ -11,10 +11,10 @@ DEPS_tribler=(kivy openssl)
  
 # url of the package
 #URL_tribler=http://ios-dev.no-ip.org/Tribler-$VERSION_tribler.tar.gz
-URL_tribler=https://github.com/devos50/Tribler/raw/master/Tribler-$VERSION_tribler.tar.gz
+URL_tribler=https://github.com/devos50/Tribler/raw/tribler-sessiontest/Tribler-$VERSION_tribler.tar.gz
  
 # md5 of the package
-MD5_tribler=21c5007bc4084f932e0677370ccb2f88
+MD5_tribler=08695ef3379d3b3aa358a1d028d86d20
  
 # default build path
 BUILD_tribler=$BUILD_PATH/tribler/$(get_directory $URL_tribler)
@@ -31,6 +31,7 @@ RECIPE_tribler=$RECIPES_PATH/tribler
 # (you can apply patch etc here.)
 function prebuild_tribler() {
 	echo "_lsprof.so" >> "${BUILD_PATH}/whitelist.txt"
+	echo "_csv.so" >> "${BUILD_PATH}/whitelist.txt"
 }
  
 # function called to build the source code
