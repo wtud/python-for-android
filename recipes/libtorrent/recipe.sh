@@ -28,7 +28,7 @@ function prebuild_libtorrent() {
 function build_libtorrent() {
 	
 	# Copy the prebuilt libtorrent.so to the python's packages, so it can be imported
-	try cp $RECIPE_libtorrent/libtorrent.so $BUILD_PATH/python-install/lib/python2.7/site-packages/libtorrent.so
+	try cp $RECIPE_libtorrent/libtorrent-v7a.so $BUILD_PATH/python-install/lib/python2.7/site-packages/libtorrent.so
 
 }
 
