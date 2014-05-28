@@ -24,6 +24,9 @@ function build_libevent() {
     try ./configure --build=i686-pc-linux-gnu --host=arm-linux-eabi --prefix=$BUILD_libevent/build/
     try make install
     pop_arm
+
+    # Make libevent.a easier to find for other packages
+    cp -rv $BUILD_libevent/build/ $BUILD_libevent/../libevent-build
 }
 
 function postbuild_libevent() {
