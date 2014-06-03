@@ -10,6 +10,10 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.os.Process;
 
+import android.content.Intent;
+import android.content.ComponentName;
+import android.net.Uri;
+
 public class PythonService extends Service  implements Runnable {
 
     // Thread for Python code
@@ -24,6 +28,8 @@ public class PythonService extends Service  implements Runnable {
     private String pythonServiceArgument;
     public static Service mService = null;
 
+    private static Context thisContext;
+
     @Override
     public IBinder onBind(Intent arg0) {
         return null;
@@ -32,6 +38,8 @@ public class PythonService extends Service  implements Runnable {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        PythonService.thisContext = this.getApplicationContext();
     }
 
     @Override
@@ -106,6 +114,17 @@ public class PythonService extends Service  implements Runnable {
         nativeInitJavaEnv();
         nativeStart(androidPrivate, androidArgument, pythonHome, pythonPath,
                 pythonServiceArgument);
+    }
+
+    public static void launchVLC(String URL)
+    {
+        //Intent i = new Intent(Intent.ACTION_MAIN);
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
+        //i.setComponent(new ComponentName("com.vlcdirect.vlcdirect", "com.vlcdirect.vlcdirect.URLStreamerActivity"));
+        //i.putExtra("url", URL);
+        i.setData(Uri.parse(URL));
+        PythonService.thisContext.startActivity(i);
     }
 
     // Native part
