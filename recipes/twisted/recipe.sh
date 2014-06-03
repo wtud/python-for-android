@@ -9,7 +9,8 @@ BUILD_twisted=$BUILD_PATH/twisted/$(get_directory $URL_twisted)
 RECIPE_twisted=$RECIPES_PATH/twisted
 
 function prebuild_twisted() {
-	true
+	echo "tty.pyo" >> "${BUILD_PATH}/whitelist.txt"
+	echo "termios.so" >> "${BUILD_PATH}/whitelist.txt"
 }
 
 function shouldbuild_twisted() {
