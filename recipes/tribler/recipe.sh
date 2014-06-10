@@ -11,7 +11,7 @@ DEPS_tribler=(kivy openssl)
  
 # url of the package
 #URL_tribler=http://ios-dev.no-ip.org/Tribler-$VERSION_tribler.tar.gz
-URL_tribler=https://github.com/lfdversluis/tribler/raw/devel/Tribler-$VERSION_tribler.tar.gz
+URL_tribler=https://github.com/rjagerman/tribler/raw/new-package/Tribler-$VERSION_tribler.tar.gz
  
 # md5 of the package
 MD5_tribler=
@@ -48,7 +48,7 @@ function postbuild_tribler() {
 	# curves.ec probably gets ignored by setup.py install,
 	# copy it manually to site-packages of the built python
 
-	echo "CURVES EC SOURCE: $BUILD_tribler"
-	try cp $CURVES_source $CURVES_dest
-
+	#echo "CURVES EC SOURCE: $BUILD_tribler"
+	#try cp $CURVES_source $CURVES_dest
+	true
 }
