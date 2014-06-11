@@ -11,9 +11,10 @@ DEPS_Tribler=(kivy openssl pycrypto m2crypto sqlite3 pyasn1 netifaces apsw twist
  
 # url of the package
 URL_Tribler=http://fr.dosoftware.nl/tsap/Tribler-${VERSION_Tribler}.tar.gz
+#URL_Tribler=https://nodeload.github.com/tribler/tribler/zip/bc58eebee2dbf13194df4dd64216434f6f1224a6
  
 # md5 of the package
-MD5_Tribler=33995f465a142b194a36229def3c4094
+MD5_Tribler=faf55067e954a014fe73aed33d2a6660
  
 # default build path
 BUILD_Tribler=$BUILD_PATH/Tribler/$(get_directory $URL_Tribler)
