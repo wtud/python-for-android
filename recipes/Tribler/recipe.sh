@@ -7,7 +7,7 @@
 VERSION_Tribler=${VERSION_Tribler:-0.1.0}
  
 # dependencies of this recipe
-DEPS_Tribler=(kivy openssl pycrypto m2crypto sqlite3 pyasn1 netifaces apsw swift)
+DEPS_Tribler=(kivy openssl pycrypto m2crypto sqlite3 pyasn1 netifaces apsw twisted pil)
  
 # url of the package
 URL_Tribler=http://fr.dosoftware.nl/tsap/Tribler-${VERSION_Tribler}.tar.gz
